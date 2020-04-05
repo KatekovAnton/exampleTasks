@@ -1,3 +1,5 @@
+# Task https://github.com/KatekovAnton/exampleTasks/blob/master/Bivalued/task.md
+# For k-valued slices
 class LRUCache:
     class Record:
         def __init__(self, key, val, next_=None, prev=None):
