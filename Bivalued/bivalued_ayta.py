@@ -60,10 +60,10 @@ class LRUCache:
             self._cache[key] = self._tail
             return False
 
-    def oldest_val(self):
+    def newest_val(self):
         return self._tail.val
 
-    def newest_val(self):
+    def oldest_val(self):
         return self._head.val
 
 
@@ -76,7 +76,7 @@ def longest_slice(nums, slice_distinct_num):
         if (cache.update(num, i)):
             curr_slice_size += 1
         else:
-            curr_slice_size = cache.oldest_val() - cache.newest_val() + 1
+            curr_slice_size = cache.newest_val() - cache.oldest_val() + 1
         if curr_slice_size > max_slice_size:
             max_slice_size = curr_slice_size
 
