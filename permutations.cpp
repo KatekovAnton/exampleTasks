@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/permutations
 
-void insert(std::vector<std::vector<int>> &result, const std::vector<int> &alreadyGenerated, std::vector<int> other)
+void insert(std::vector<std::vector<int>> &result, const std::vector<int> &alreadyGenerated, const std::vector<int> &other)
 {
     if (other.size() == 1) {
         result.push_back(alreadyGenerated);
