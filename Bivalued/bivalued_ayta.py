@@ -66,6 +66,9 @@ class LRUCache:
     def oldest_val(self):
         return self._head.val
 
+    def size(self):
+        return len(self._cache)
+
 
 def longest_slice(nums, slice_distinct_num):
     cache = LRUCache(slice_distinct_num)
@@ -73,10 +76,13 @@ def longest_slice(nums, slice_distinct_num):
     curr_slice_size = 0
 
     for i, num in enumerate(nums):
-        if (cache.update(num, i)):
+        old_size = cache.size()
+        oldest_pos = cache.oldest_val() if old_size != 0 else -1
+
+        if (cache.update(num, i) or old_size < slice_distinct_num):
             curr_slice_size += 1
         else:
-            curr_slice_size = cache.newest_val() - cache.oldest_val() + 1
+            curr_slice_size = cache.newest_val() - oldest_pos
         if curr_slice_size > max_slice_size:
             max_slice_size = curr_slice_size
 
@@ -88,6 +94,7 @@ def main():
     assert(3 == longest_slice([1, 2, 3, 2], 2))
     assert(4 == longest_slice([0, 5, 4, 4, 5, 12], 2))
     assert(2 == longest_slice([4, 4], 2))
+    assert(6 == longest_slice([0, 3, 3, 7, 3, 7, 3, 5, 3, 11, 1], 2))
 
     # K-valued slices
     assert(5 == longest_slice([0, 5, 4, 4, 5, 12], 3))
