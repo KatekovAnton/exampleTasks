@@ -9,16 +9,6 @@ func sol(nums []int) int {
         fmt.Println("arr has only one elelement")
         return nums[0]
     }
-    if len(nums) == 2 {
-        fmt.Println("arr has only two elelements")
-        if nums[0] >= 0 && nums[1] >= 0 {
-            return nums[0] + nums[1]
-        }
-        if nums[0] > nums[1] {
-            return nums[0]
-        }
-        return nums[1]
-    }
 
     sum, max, maxEl := nums[0], nums[0], nums[0]
     numsLen := len(nums) - 1
